@@ -12,4 +12,4 @@ if __name__ == "__main__":
         msg = msg + "s:"
     print("{:d} {:s}". format(argc - 1, msg))
     for i in range(1, argc):
-        print("{:d} : {:s}". format(i, argv[i]))
+        print("{:d}: {:s}". format(i, argv[i]))
