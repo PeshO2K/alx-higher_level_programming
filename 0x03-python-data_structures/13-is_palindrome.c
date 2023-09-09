@@ -1,60 +1,56 @@
 #include "lists.h"
-#include <stdbool.h>
-
 /**
- * reverse - reverses a singly linked list
- * @head: double pointer to the head of the list
+ * list_length - finds the length of a singly linked list
+ * @head: pointer to the head of the list
+ * Return: the length of the list
  */
-void reverse(listint_t **head)
+int list_length(listint_t **head)
 {
-    listint_t *prev = NULL;
     listint_t *current = *head;
-    listint_t *next;
+    int len = 0;
 
-    while (current != NULL)
+    while (current)
     {
-        next = current->next;
-        current->next = prev;
-        prev = current;
-        current = next;
+        len++;
+        current = current->next;
     }
 
-    *head = prev;
+    return (len);
 }
-
 /**
- * is_palindrome - checks if a singly linked list is a palindrome
- * @head: double pointer to the head of the list
+ * is_palindrome - function that checks if a singly linked list is a palindrome
+ * @head: Pointer to head
  * Return: 0 if it is not a palindrome, 1 if it is a palindrome
  */
 int is_palindrome(listint_t **head)
 {
-    if (*head == NULL || (*head)->next == NULL)
+    listint_t *curr = *head;
+    int len = 0, i, *nums;
+
+    if (head && (*head) && (*head)->next)
     {
+        len = list_length(head);
+        nums = malloc(sizeof(int) * len);
+        if (!nums)
+        {
+            return (0);
+        }
+        curr = *head;
+        for (i = 0; i < len; i++)
+        {
+            nums[i] = curr->n;
+            curr = curr->next;
+        }
+        for (i = 0; i < len / 2; i++)
+        {
+            if (nums[i] != nums[len - i - 1])
+            {
+                free(nums);
+                return (0);
+            }
+        }
+        free(nums);
         return (1);
     }
-    listint_t *slow = *head;
-    listint_t *fast = *head;
-
-    /*/ Find the middle of the linked list*/
-    while (fast != NULL && fast->next != NULL)
-    {
-        slow = slow->next;
-        fast = fast->next->next;
-    }
-
-    /*/ Reverse the second half of the linked list*/
-    reverse(&slow);
-
-    /* Compare the first half and the reversed second half*/
-    while (slow != NULL)
-    {
-        if ((*head)->n != slow->n)
-            return (0);
-
-        *head = (*head)->next;
-        slow = slow->next;
-    }
-
     return (1);
 }
