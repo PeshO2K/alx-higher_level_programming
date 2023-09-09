@@ -1,0 +1,57 @@
+#include "lists.h"
+/**
+ * list_length - finds the length of a singly linked list
+ * @head: pointer to the head of the list
+ * Return: the length of the list
+ */
+int list_length(listint_t **head)
+{
+    listint_t *current = *head;
+    int len = 0;
+
+    while (current)
+    {
+        len++;
+        current = current->next;
+    }
+
+    return (len);
+}
+/**
+ * is_palindrome - function that checks if a singly linked list is a palindrome
+ * @head: Pointer to head
+ * Return: 0 if it is not a palindrome, 1 if it is a palindrome
+ */
+int is_palindrome(listint_t **head)
+{
+    listint_t *curr = *head;
+    int len = 0, i; 
+    int *nums;
+
+    if (head && (*head) && (*head)->next)
+    {
+        len = list_length(head);
+        nums = malloc(sizeof(int) * len);
+        if (!nums)
+        {
+            return (0);
+        }
+        curr = *head;
+        for (i = 0; i < len; i++)
+        {
+            nums[i] = curr->n;
+            curr = curr->next;
+        }
+        for (i = 0; i < len / 2; i++)
+        {
+            if (nums[i] != nums[len - i - 1])
+            {
+                free(nums);
+                return (0);
+            }
+        }
+        free(nums);
+        return (1);
+    }
+    return (1);
+}
