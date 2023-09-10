@@ -42,14 +42,7 @@ int is_palindrome(listint_t **head)
             nums[i] = curr->n;
             curr = curr->next;            
         }
-        if (odd_flag)
-        {
-            i = i - 2;
-        }
-        else
-        {
-            i = i - 1;
-        }
+        i = i - (odd_flag ? 2 : 1);
         for (; i >= 0; i--, curr = curr->next)
         {
             if (nums[i] != curr->n)
