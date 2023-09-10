@@ -26,7 +26,7 @@ int is_palindrome(listint_t **head)
 {
     listint_t *curr = *head;
     int len = 0, i, odd_flag = 0;
-    int *nums;
+    int nums[4096];
 
     if (head && (*head) && (*head)->next)
     {
@@ -35,11 +35,6 @@ int is_palindrome(listint_t **head)
         {
             len = len + 1;
             odd_flag = 1;
-        }
-        nums = malloc(sizeof(int) * len);
-        if (!nums)
-        {
-            return (0);
         }
         curr = *head;
         for (i = 0; i < (len/2); i++)
@@ -59,11 +54,9 @@ int is_palindrome(listint_t **head)
         {
             if (nums[i] != curr->n)
             {
-                free(nums);
                 return (0);
             }
         }
-        free(nums);
         return (1);
     }
     return (1);
