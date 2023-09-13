@@ -12,5 +12,5 @@ def roman_to_int(roman_string):
         for i, (curr, nxt) in enumerate(zip(new_list, new_list[1:])):
             if curr < nxt:
                 new_list[i] = -curr
-        return new_list
+        return sum(new_list)
     return 0
