@@ -1,5 +1,14 @@
 #include <Python.h>
 
+/**
+ * print_python_list - prints some basic info about Python lists
+ *
+ * Description: function that prints some basic info about Python lists
+ *
+ * @p: PyObject pointer
+ *
+ * Return: void
+ */
 void print_python_list(PyObject *p)
 {
     if (PyList_Check(p)) {
@@ -15,7 +24,15 @@ void print_python_list(PyObject *p)
         printf("  [ERROR] Invalid List Object\n");
     }
 }
-
+/**
+ * print_python_bytes - prints python bytes
+ *
+ * Description: prints python bytes
+ *
+ * @p: PyObject pointer
+ *
+ * Return: void
+ */
 void print_python_bytes(PyObject *p)
 {
     if (PyBytes_Check(p)) {
@@ -31,7 +48,15 @@ void print_python_bytes(PyObject *p)
         printf("  [ERROR] Invalid Bytes Object\n");
     }
 }
-
+/**
+ * print_python_float - prints some basic info about Python lists
+ *
+ * Description: function that prints some basic info about Python lists
+ *
+ * @p: PyObject pointer
+ *
+ * Return: void
+ */
 void print_python_float(PyObject *p)
 {
     if (PyFloat_Check(p)) {
