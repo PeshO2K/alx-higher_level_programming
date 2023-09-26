@@ -63,5 +63,8 @@ class Square:
         The square is printed as a grid of "#" characters,
         with the size of the grid equal to the size of the square's side.
         """
-        for i in range(self.__size):
-            print("#" * self.__size)
+        if self.__size == 0:
+            print()
+        else:
+            for i in range(self.__size):
+                print("#" * self.__size)
