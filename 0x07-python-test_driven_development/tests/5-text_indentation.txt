@@ -1,0 +1,52 @@
+The ``5-text_indentation`` module
+============================
+
+Using ``text_indentation``
+---------------------
+First import ``text_indentation `` from The
+``5-text_indentation`` module:
+	>>> text_indentation = __import__('5-text_indentation').text_indentation
+	
+	>>> text = "Two.  Words: Choco? Puffs"
+	
+	>>> text_indentation(text)
+	Two.
+	<BLANKLINE>
+	Words:
+	<BLANKLINE>
+	Choco?
+	<BLANKLINE>
+	Puffs
+	
+	>>> text_indentation(None)
+	Traceback (most recent call last):
+	TypeError: text must be a string
+	
+	>>> text_indentation()
+	Traceback (most recent call last):
+	TypeError: text_indentation() missing 1 required positional argument: 'text'
+	
+	>>> text_indentation(123)
+	Traceback (most recent call last):
+	TypeError: text must be a string
+	>>> text = "   Two."
+	>>> text_indentation(text)
+	Two.
+	<BLANKLINE>
+	>>> text = "Two    "
+	>>> text_indentation(text)
+	Two
+	>>> text_indentation("")
+	>>> text_indentation(".")
+	.
+	<BLANKLINE>
+	>>> text = """Choco:.? \nBOOM """
+	>>> text_indentation(text)
+	Choco:
+	<BLANKLINE>
+	.
+	<BLANKLINE>
+	?
+	<BLANKLINE>
+	<BLANKLINE>
+	BOOM
