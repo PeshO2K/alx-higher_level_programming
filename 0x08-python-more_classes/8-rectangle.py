@@ -72,11 +72,15 @@ class Rectangle():
         return f"Rectangle({self.__width}, {self.__height})"
 
     def __del__(self):
+        """Print delete message
+        Decrease counter
+        """
         type(self).number_of_instances -= 1
         print("Bye rectangle...")
 
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
+        """Compare sizes"""
         if not isinstance(rect_1, Rectangle):
             raise TypeError("rect_1 must be an instance of Rectangle")
         elif not isinstance(rect_2, Rectangle):

@@ -3,8 +3,8 @@
 
 
 class Rectangle():
-	"""
-	Class defining Rectangle
-	
-	"""
-	pass
+    """
+    Class defining Rectangle
+
+    """
+    pass
