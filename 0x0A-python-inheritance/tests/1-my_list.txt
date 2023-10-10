@@ -1,0 +1,41 @@
+The ``1-my_list`` module
+============================
+
+Using ``MyList``
+---------------------
+First import ``MyList `` from The
+``1-my_list`` module:
+	>>> MyList = __import__('1-my_list').MyList
+
+	>>> my_list = MyList()
+	>>> my_list.append(4)
+	>>> my_list.append(3)
+	>>> my_list.append(2)
+	>>> my_list.append(1)
+	>>> my_list.append(0)
+	>>> my_list.print_sorted()
+	[0, 1, 2, 3, 4]
+
+	>>> my_list = MyList()
+	>>> my_list.print_sorted()
+	[]
+
+	>>> my_list.append(0)
+	>>> my_list.print_sorted()
+	[0]
+
+	>>> my_list = MyList([0, -1, -2, 5, -5])
+	>>> my_list.print_sorted()
+	[-5, -2, -1, 0, 5]
+
+	>>> mod_docs = __import__('1-my_list').__doc__
+	>>> class_docs = MyList.__doc__
+	>>> func_docs =  MyList.print_sorted.__doc__
+	>>> len(mod_docs) > 0
+	True
+	>>> len(class_docs) > 0
+	True
+	>>> len(func_docs) > 0
+	True
+
+	
