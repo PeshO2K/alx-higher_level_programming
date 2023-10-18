@@ -40,5 +40,6 @@ class Square(Rectangle):
             super().update(**kwargs)
 
     def to_dictionary(self):
+        """Dictionary rep"""
         return {'id': self.id, 'size': self.size,
                 'x': self.x, 'y': self.y}
