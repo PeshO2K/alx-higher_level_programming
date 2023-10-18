@@ -98,9 +98,13 @@ class Rectangle(Base):
         Return Area
         """
         return self.__height * self.__width
-    
+
     def display(self):
         """Prints rectangle with #"""
         rec = "\n".join(["#" * self.__width for i in range(self.__height)])
         print(rec)
-    
+
+    def __str__(self):
+        """Return Object description"""
+        return (f"[Rectangle] ({self.id}) {self.__x}/{self.__y}"
+                f" - {self.__width}/{self.__height}")
