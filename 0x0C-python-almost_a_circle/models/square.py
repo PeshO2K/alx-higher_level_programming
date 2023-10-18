@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Sqaure Module"""
+"""Square Module"""
 from models.rectangle import Rectangle
 
 
@@ -16,10 +16,10 @@ class Square(Rectangle):
     def size(self):
         """Get size"""
         return self.width
-    
+
     @size.setter
     def size(self, value):
-        """Set szie"""
+        """Set size"""
         self.width = self.height = value
 
     def __str__(self):
