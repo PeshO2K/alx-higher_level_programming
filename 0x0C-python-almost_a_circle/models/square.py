@@ -38,3 +38,7 @@ class Square(Rectangle):
             if 'size' in kwargs:
                 kwargs['width'] = kwargs['height'] = kwargs['size']
             super().update(**kwargs)
+
+    def to_dictionary(self):
+        return {'id': self.id, 'size': self.size,
+                'x': self.x, 'y': self.y}
