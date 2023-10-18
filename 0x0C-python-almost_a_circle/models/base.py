@@ -2,6 +2,7 @@
 """
 Base class Module
 """
+import os
 import json
 
 
