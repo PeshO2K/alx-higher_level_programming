@@ -101,7 +101,9 @@ class Rectangle(Base):
 
     def display(self):
         """Prints rectangle with #"""
-        rec = "\n".join(["#" * self.__width for i in range(self.__height)])
+        rec = "\n" * self.__y
+        rec += "\n".join([" " * self.__x + "#" * self.__width
+                          for i in range(self.__height)])
         print(rec)
 
     def __str__(self):
