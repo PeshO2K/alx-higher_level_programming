@@ -24,7 +24,7 @@ int list_length(listint_t **head)
  */
 int is_palindrome(listint_t **head)
 {
-    listint_t *curr = *head;
+    listint_t *curr;
     int len = 0, i, odd_flag = 0;
     int nums[4096];
 
@@ -37,10 +37,9 @@ int is_palindrome(listint_t **head)
             odd_flag = 1;
         }
         curr = *head;
-        for (i = 0; i < (len/2); i++)
+        for (i = 0; i < (len/2); i++, curr = curr->next)
         {
-            nums[i] = curr->n;
-            curr = curr->next;            
+            nums[i] = curr->n;            
         }
         i = i - (odd_flag ? 2 : 1);
         for (; i >= 0; i--, curr = curr->next)
@@ -50,7 +49,6 @@ int is_palindrome(listint_t **head)
                 return (0);
             }
         }
-        /*return (1);*/
     }
     return (1);
 }

@@ -1,105 +1,70 @@
 #!/usr/bin/python3
-"""
-Base class Module
-"""
-import os
-import csv
+"""Base module"""
+
 import json
+import os
 
-
-class Base():
+class Base:
     """Base class"""
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """Constrctor function
-        """
+        """ Class Initialization"""
         if id is not None:
             self.id = id
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
-
+    
     @staticmethod
     def to_json_string(list_dictionaries):
-        """
-        return JSON rep of dictionaries
-        """
-        if not list_dictionaries:
-            return "[]"
-        else:
+        """To JSON string"""
+        if list_dictionaries:
             return json.dumps(list_dictionaries)
-
+        else:
+            return "[]"
+    
     @classmethod
     def save_to_file(cls, list_objs):
-        """Write json to file"""
-        list_dicts = [obj.to_dictionary() for obj in list_objs]\
-            if list_objs else []
+        """Save JSON to file"""
+        filename = cls.__name__ + ".json"
+        my_list = [obj.to_dictionary() for obj in list_objs]\
+        if list_objs else []
 
-        with open(cls.__name__ + '.json', "w") as file:
-            file.write(cls.to_json_string(list_dicts))
+        with open(filename, "w") as file:
+            file.write(cls.to_json_string(my_list))
+    
 
     @staticmethod
     def from_json_string(json_string):
-        """From Json"""
-        if not json_string:
-            return []
-        else:
+        """From JSON to dictionary"""
+        if json_string:
             return json.loads(json_string)
-
+        else:
+            return []
+    
     @classmethod
     def create(cls, **dictionary):
-        """Create preinitialized class"""
-        if cls.__name__ == 'Rectangle':
+        """Create instance"""
+        if cls.__name__ == "Rectangle":
             dummy = cls(1, 1)
-        elif cls.__name__ == 'Square':
+        elif cls.__name__ == "Square":
             dummy = cls(1)
         dummy.update(**dictionary)
         return dummy
-
+    
     @classmethod
     def load_from_file(cls):
-        """Load from files"""
-        filename = cls.__name__ + '.json'
+        """Return list of instances"""
+        filename = cls.__name__ + ".json"
+
         if not os.path.exists(filename):
             return []
 
-        with open(filename, 'r') as file:
-            list_dicts = cls.from_json_string(file.read())
+        with open(filename, "r") as file:
+            my_list = cls.from_json_string(file.read())
+            return [cls.create(**dict) for dict in my_list]
 
-        return [cls.create(**dict_) for dict_ in list_dicts]
 
-    @classmethod
-    def save_to_file_csv(cls, list_objs):
-        """Save to csv"""
-        filename = cls.__name__ + '.csv'
-        with open(filename, 'w', newline='') as csvfile:
-            if list_objs is not None:
-                writer = csv.writer(csvfile)
-                for obj in list_objs:
-                    if cls.__name__ == 'Rectangle':
-                        writer.writerow([obj.id, obj.width,
-                                         obj.height, obj.x, obj.y])
-                    elif cls.__name__ == 'Square':
-                        writer.writerow([obj.id, obj.size, obj.x, obj.y])
 
-    @classmethod
-    def load_from_file_csv(cls):
-        """Load csv file """
-        filename = cls.__name__ + '.csv'
-        if not os.path.exists(filename):
-            return []
-
-        with open(filename, 'r') as csvfile:
-            reader = csv.reader(csvfile)
-            list_objs = []
-            for row in reader:
-                if cls.__name__ == 'Rectangle':
-                    dictionary = {'id': int(row[0]), 'width': int(row[1]),
-                                  'height': int(row[2]),
-                                  'x': int(row[3]), 'y': int(row[4])}
-                elif cls.__name__ == 'Square':
-                    dictionary = {'id': int(row[0]), 'size': int(row[1]),
-                                  'x': int(row[2]), 'y': int(row[3])}
-                list_objs.append(cls.create(**dictionary))
-        return list_objs
+            
