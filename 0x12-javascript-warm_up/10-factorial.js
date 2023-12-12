@@ -9,4 +9,4 @@ function factorial (n) {
 
 const num = Number(process.argv[2]);
 
-console.log('The factorial is: ' + factorial(num));
+console.log(factorial(num));
