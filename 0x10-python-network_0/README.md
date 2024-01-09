@@ -1,7 +1,8 @@
 # Python Network 0: HTTP
 ## Task 1
 Write a Bash script that takes in a URL, sends a request to that URL, and displays the size of the body of the response
-### curl flags: `-I, --head`, `-s, --silent`
+### curl 
+flags: `-I, --head`, `-s, --silent`
 
 
 `curl -I -s $URL`
