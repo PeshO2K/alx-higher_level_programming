@@ -1,3 +1,3 @@
 #!/bin/bash
-# Fetch headers only and print allowed methods
+# Custom header and display body of response
 curl -sH "X-School-User-Id: 98" $1
