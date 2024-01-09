@@ -2,7 +2,8 @@
 ## Task 1
 Write a Bash script that takes in a URL, sends a request to that URL, and displays the size of the body of the response
 ### Curl
-Flags: `-I, --head`, `-s, --silent`
+Flags: `-I, --head`, `-s, --silent
+`
 command:
 `curl -I -s $URL`
 ```
@@ -12,4 +13,5 @@ Date: Tue, 09 Jan 2024 14:53:56 GMT
 Content-Type: text/html; charset=utf-8
 Content-Length: 10
 ```
+
 
