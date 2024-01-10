@@ -9,12 +9,12 @@ def handle_http_error(url):
     '''Function to post email'''
     req = Request(url)
     try:
-        response = urlopen(req)
+        with urlopen(req) as response:
+            html = response.read()
+            print(html.decode('utf-8'))
+
     except HTTPError as e:
         print('Error code: ', e.code)
-    else:
-        html = response.read()
-        print(html.decode('utf-8'))
 
 
 if __name__ == "__main__":
