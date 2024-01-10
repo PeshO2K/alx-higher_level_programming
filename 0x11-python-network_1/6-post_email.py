@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+'''Module to post email'''
 import requests
 import sys
 
