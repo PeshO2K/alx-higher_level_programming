@@ -1,11 +1,12 @@
 #!/usr/bin/python3
-import urllib.request as urlreq
+import urllib.request  # .request as urlreq
 '''Module the fetches https://alx-intranet.hbtn.io/status'''
 
 
 def fetch_url():
     '''Function to fetch url'''
-    with urlreq.urlopen('https://alx-intranet.hbtn.io/status') as response:
+    url = 'https://alx-intranet.hbtn.io/status'
+    with urllib.request.urlopen(url) as response:
         html = response.read()
         print("Body response:")
         print("\t- type: {}".format(type(html)))
