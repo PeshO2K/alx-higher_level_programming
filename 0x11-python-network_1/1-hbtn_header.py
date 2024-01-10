@@ -9,7 +9,7 @@ def fetch_request_id(url):
     header = "X-Request-Id"
     with urllib.request.urlopen(url) as response:
         html = response.getheader(header)
-        print("\t- content: {}".format(html))
+        print(html)
 
 
 if __name__ == "__main__":
