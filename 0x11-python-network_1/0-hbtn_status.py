@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-import urllib.request  # .request as urlreq
 '''Module the fetches https://alx-intranet.hbtn.io/status'''
 
 
 def fetch_url():
     '''Function to fetch url'''
+    import urllib.request
     url = 'https://alx-intranet.hbtn.io/status'
     with urllib.request.urlopen(url) as response:
         html = response.read()
@@ -15,4 +15,5 @@ def fetch_url():
 
 
 if __name__ == "__main__":
+    '''Get body response'''
     fetch_url()
