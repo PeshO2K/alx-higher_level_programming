@@ -14,7 +14,7 @@ def handle_http_error(url):
             print(html.decode('utf-8'))
 
     except HTTPError as e:
-        print('Error code: ', e.code)
+        print('Error code:', e.code)
 
 
 if __name__ == "__main__":
