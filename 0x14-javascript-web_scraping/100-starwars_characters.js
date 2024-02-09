@@ -19,7 +19,7 @@ request.get(apiUrl, (error, response, body) => {
   }
 });
 
-function fetchCharacterName(characterUrl) {
+function fetchCharacterName (characterUrl) {
   return new Promise((resolve, reject) => {
     request.get(characterUrl, (error, response, body) => {
       if (error) {

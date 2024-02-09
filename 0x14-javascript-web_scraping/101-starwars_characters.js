@@ -19,7 +19,7 @@ request.get(apiUrl, (error, response, body) => {
   }
 });
 
-function fetchAndPrintCharacterNames(characterUrls) {
+function fetchAndPrintCharacterNames (characterUrls) {
   return new Promise((resolve, reject) => {
     let remainingRequests = characterUrls.length;
 
